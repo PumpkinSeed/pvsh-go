@@ -1,3 +1,5 @@
+// Package pvsh
+// The original source of the algorithm: https://github.com/natrixofficial/npvdkgr
 package pvsh
 
 import (
