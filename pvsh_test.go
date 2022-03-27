@@ -1,7 +1,9 @@
-package pvsh
+package pvsh_test
 
 import (
 	"testing"
+
+	"github.com/PumpkinSeed/pvsh-go"
 
 	"github.com/alinush/go-mcl"
 )
@@ -38,14 +40,14 @@ func TestPVSH(t *testing.T) {
 	var ph mcl.G2
 	mcl.G2Mul(&ph, &tmpG2, &sh)
 
-	esh, err := Encode(id, pk, sh, tmpG2)
+	esh, err := pvsh.Encode(id, pk, sh, tmpG2)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if err := Verify(id, pk, ph, esh, tmpG2); err != nil {
+	if err := pvsh.Verify(id, pk, ph, esh, tmpG2); err != nil {
 		t.Fatal(err)
 	}
-	decodedSh, err := Decode(id, pk, sk, esh)
+	decodedSh, err := pvsh.Decode(id, pk, sk, esh)
 	if err != nil {
 		t.Fatal(err)
 	}
